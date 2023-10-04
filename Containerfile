@@ -52,13 +52,14 @@ ENV BUILDAH_LAYERS=true
 ADD ./containers.conf /etc/containers/
 
 #Add codeqlv2
-ADD ./codeql-bundle-linux64.tar.gz /opt/codeql-action-v2
+#ADD ./codeql-bundle-linux64.tar.gz /opt/codeql-action-v2
+COPY ./codeql-bundle-linux64.tar.gz /opt/
 
-ENV PATH "/opt/codeql-action-v2/codeql:$PATH"
+#ENV PATH "/opt/codeql-action-v2/codeql:$PATH"
 
-RUN chgrp -R 0 /etc/containers/ /opt/codeql-action-v2 && \
-    chmod -R a+r /etc/containers/ /opt/codeql-action-v2 && \
-    chmod -R g+w /etc/containers/ /opt/codeql-action-v2
+#RUN chgrp -R 0 /etc/containers/ /opt/codeql-action-v2 && \
+#    chmod -R a+r /etc/containers/ /opt/codeql-action-v2 && \
+#    chmod -R g+w /etc/containers/ /opt/codeql-action-v2
 
 # Use VFS since fuse does not work
 # https://github.com/containers/buildah/blob/master/vendor/github.com/containers/storage/storage.conf
